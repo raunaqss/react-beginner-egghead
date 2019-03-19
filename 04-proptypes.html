@@ -16,13 +16,17 @@
   function SayHello(props) {
     return (<div>Hello {props.firstName} {props.lastName}!</div>)
   }
-  
-  SayHello.propTypes =   {
-    firstName(props, propName, componentName) {
+  const PropTypes = {
+    string(props, propName, componentName) {
       if (props[propName] !== 'string') {
         throw new Error(`Hey, you should pass a string for ${propName} in ${componentName} but you passed ${typeof props[propName]}`);
       }
     }
+  }
+
+  SayHello.propTypes =   {
+    firstName: PropTypes.string,
+    lastName: PropTypes.string
   }
   const element = (
     <div className='container'>
