@@ -13,11 +13,11 @@
   <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
   <script type='text/babel'>
   const rootElement = document.getElementById('root')
-  const Message = props => <div>{props.msg}</div>
+  const Message = props => <div>{props.children}</div>
   const element = (
     <div className='container'>
-      <Message msg='hello raunaq' />
-      <Message msg='bye raunaq' />
+      <Message>hello raunaq</Message>
+      <Message>bye raunaq</Message>
     </div>
   )
   ReactDOM.render(element, rootElement)
