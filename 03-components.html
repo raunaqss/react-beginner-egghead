@@ -16,7 +16,8 @@
   const message = props => <div>{props.msg}</div>
   const element = (
     <div className='container'>
-      <message msg='hello raunaq' />
+      {React.createElement(message, { msg: 'hello raunaq' })}
+      {React.createElement(message, { msg: 'bye raunaq' })}
     </div>
   )
   ReactDOM.render(element, rootElement)
