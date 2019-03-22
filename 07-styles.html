@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Styles in React</title>
+    <meta charset='UTF-8' />
+    
+  </head>
+  <body>
+    <div id='root'></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+    <script type='text/babel'>
+      function Box({style, size, className = '', ...rest}) {
+        const sizeClassName = size ? `box--${size}` : ''
+        return (
+          <div
+            style={{ paddingLeft: 20, ...style }}
+            className={['box', className, sizeClassName].join(' ')}
+            {...rest}
+          />
+        )
+      }
+      Box.propTypes = {
+        style: PropTypes.object,
+        className: PropTypes.string,
+        size: PropTypes.oneOf(['small', 'medium', 'large'])
+      }
+      const element = (
+        <div>
+          <Box style={{ backgroundColor: 'lightblue' }} size='small'>small box</Box>
+          <Box style={{ backgroundColor: 'lightpink' }} size='medium'>medium box</Box>
+          <Box style={{ backgroundColor: 'orange' }} size='large'>large box</Box>
+        </div>
+      )
+      ReactDOM.render(element, document.getElementById('root'))
+    </script>
+    <style>
+      .box {
+        border: 1px solid #333;
+      }
+    
+      .box--large {
+        width: 180px;
+        height: 180px;
+      }
+    
+      .box--medium {
+        width: 120px;
+        height: 120px;
+      }
+    
+      .box--small {
+        width: 60px;
+        height: 60px;
+      }
+    </style>
+  </body>
+</html>
